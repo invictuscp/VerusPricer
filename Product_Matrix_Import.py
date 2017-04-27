@@ -165,7 +165,7 @@ def importRateSheets():
 
 	# CREDIT ASCENT PRIMARY MATRIX
 	print "Loading Verus Credit Ascent Primary Matrix..."
-	wb = load_workbook(filename = '/home/maverick/VerusPricer/static/matrices/Credit Ascent Primary Matrix.xlsx')
+	wb = load_workbook(filename = '/home/invictus/VerusPricer/static/matrices/Credit Ascent Primary Matrix.xlsx')
 	ws = wb.active
 	
 	#Load Full Doc/24 Mo Bank Statement
@@ -234,7 +234,7 @@ def importRateSheets():
 
 	# CREDIT ASCENT 2ND HOME MATRIX
 	print "Loading Verus Credit Ascent 2nd Home Matrix..."
-	wb = load_workbook(filename = '/home/maverick/VerusPricer/static/matrices/Credit Ascent Secondary Matrix.xlsx')
+	wb = load_workbook(filename = '/home/invictus/VerusPricer/static/matrices/Credit Ascent Secondary Matrix.xlsx')
 	ws = wb.active
 	
 	#Load Full Doc/24 Mo Bank Statement
@@ -303,7 +303,7 @@ def importRateSheets():
 
 	# INVESTOR DTI MATRIX
 	print "Loading Verus Investor DTI Matrix..."
-	wb = load_workbook(filename = '/home/maverick/VerusPricer/static/matrices/Investor DTI Matrix.xlsx')
+	wb = load_workbook(filename = '/home/invictus/VerusPricer/static/matrices/Investor DTI Matrix.xlsx')
 	ws = wb.active
 	
 	#Load Full Doc/24 Mo Bank Statement
