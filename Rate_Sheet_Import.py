@@ -25,7 +25,7 @@ def importRateSheets():
 
 	# CREDIT ASCENT RATE SHEET
 	print "Loading Verus Credit Ascent Rate Sheet..."
-	wb = load_workbook(filename = '/home/maverick/VerusPricer/static/rates/Verus Credit Ascent Rate Sheet.xlsx')
+	wb = load_workbook(filename = '/VerusPricer/static/rates/Verus Credit Ascent Rate Sheet.xlsx')
 	ws = wb.active
 	
 	#Load Base Rates
@@ -237,7 +237,7 @@ def importRateSheets():
 
 	# INVESTOR DTI RATE SHEET
 	print "Loading Verus Investor DTI Rate Sheet..."
-	wb = load_workbook(filename = '/home/maverick/VerusPricer/static/rates/Verus Investor DTI Rate Sheet.xlsx')
+	wb = load_workbook(filename = '/VerusPricer/static/rates/Verus Investor DTI Rate Sheet.xlsx')
 	ws = wb.active
 	
 	#Load Base Rates
@@ -437,7 +437,7 @@ def importRateSheets():
 
 	# INVESTOR PI RATE SHEET
 	print "Loading Verus Investor PI Rate Sheet..."
-	wb = load_workbook(filename = '/home/maverick/VerusPricer/static/rates/Verus Investor PI Rate Sheet.xlsx')
+	wb = load_workbook(filename = '/VerusPricer/static/rates/Verus Investor PI Rate Sheet.xlsx')
 	ws = wb.active
 	
 	#Load Base Rates
