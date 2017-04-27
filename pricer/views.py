@@ -169,7 +169,7 @@ def index(request):
 						elif propType == "Non-Warrantable Condo" and getLTV(ltv) > 75:
 							reasons = reasons + "LTV Exceeded for Given Property Type" + '\n'
 							eligibility = "Not Eligible"
-						elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) < 80:
+						elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) > 80:
 							reasons = reasons + "LTV Exceeded for Given Loan Amount" + '\n'
 							eligibility = "Not Eligible"
 					elif grade in ("B+", "B", "B-", "C"):
@@ -182,7 +182,7 @@ def index(request):
 						elif propType == "Non-Warrantable Condo" and grade == "C":
 							reasons = reasons + "Grade Below Limit for Given Property Type" + '\n'
 							eligibility = "Not Eligible"
-						elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) < 75:
+						elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) > 75:
 							reasons = reasons + "LTV Exceeded for Given Loan Amount" + '\n'
 							eligibility = "Not Eligible"
 				elif occupancy =="2nd Home":
@@ -193,7 +193,7 @@ def index(request):
 						elif propType == "Non-Warrantable Condo" and getLTV(ltv) > 65:
 							reasons = reasons + "LTV Exceeded for Given Property Type" + '\n'
 							eligibility = "Not Eligible"
-						elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) < 70:
+						elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) > 70:
 							reasons = reasons + "LTV Exceeded for Given Loan Amount" + '\n'
 							eligibility = "Not Eligible"
 					elif grade in ("B+", "B", "B-", "C"):
@@ -429,6 +429,10 @@ def index(request):
 					reasons = reasons + "LTV Exceeds Limit for Foreign National Borrowers" + '\n'
 					eligibility = "Not Eligible"
 
+				if int(fico[:3]) <= 620:
+					reasons = reasons + "FICO Below Limit for Foreign National Borrowers" + '\n'
+					eligibility = "Not Eligible"
+
 				if getReserves(reserves) < 12:
 					reasons = reasons + "Reserves Below Limit for Foreign National Borrowers" + '\n'
 					eligibility = "Not Eligible"
@@ -496,7 +500,7 @@ def index(request):
 					elif propType == "Non-Warrantable Condo" and getLTV(ltv) > 65:
 						reasons = reasons + "LTV Exceeded for Given Property Type" + '\n'
 						eligibility = "Not Eligible"
-					elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) < 70:
+					elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) > 70:
 						reasons = reasons + "LTV Exceeded for Given Loan Amount" + '\n'
 						eligibility = "Not Eligible"
 				elif grade in ("B+", "B", "B-", "C"):
@@ -506,7 +510,7 @@ def index(request):
 					elif propType == "Non-Warrantable Condo" and getLTV(ltv) > 65:
 						reasons = reasons + "LTV Exceeded for Given Property Type" + '\n'
 						eligibility = "Not Eligible"
-					elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) < 65:
+					elif getLoanAmount(loanamount) < 150000 and getLTV(ltv) > 65:
 						reasons = reasons + "LTV Exceeded for Given Loan Amount" + '\n'
 						eligibility = "Not Eligible"
 				
