@@ -1,0 +1,8 @@
+/* Stylesheet for FX library version 1.1+ */
+.fx-table-fix {table-layout:fixed;width:100%;}
+.fx-hidden {visibility:hidden;}
+.fx-relative {position:relative;}
+.fx-index {z-index:0;}
+.fx-select {overflow:hidden;display:inline-block;}
+.fx-select select {border:0;background:none;outline:none;}
+.fx-left-arrow,.fx-right-arrow {cursor:pointer;}

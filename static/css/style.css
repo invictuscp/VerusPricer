@@ -1,0 +1,153 @@
+/* Verus */
+/*
+	font-family:'Proxima Nova W01';
+		light     200
+		semibold	400
+		bold			500
+
+
+	*/
+body {font-family:'Proxima Nova W01'; font-weight:200; width:100%; overflow-x:hidden; background-color:#EBE8E5;}
+@media screen and (max-device-width: 480px){body{-webkit-text-size-adjust: 100%;}p{max-height:9999px;}}	
+td {vertical-align:top;}
+* {margin:0;}
+#container {position:absolute; left:0px; top:0px; height:100%; min-height:750px; padding:0; z-index:2; margin-left:233px;}
+.content {position:relative; padding:65px 60px 75px 60px; min-width:605px; max-width:888px; text-align:left; overflow-x:hidden; margin:0 auto;}
+#side-bar {position:fixed; height:100%; width:233px; background-color:#F1F0EF; z-index:3; min-height:570px;}
+#logo-top {position:relative; top:11%; left:0px; background:url(/static/images/logo.png) no-repeat center center; display:block; width:100%; height:52px}
+#side-bar div {position:absolute; top:38%;}
+#side-bar a, #side-bar p {color:#545454; font-size:13px; line-height:20px; text-decoration:none; text-transform:uppercase; display:block;}
+#side-bar div a {margin-left:30px; display:block; margin-bottom:20px;}
+#side-bar a.sel, #side-bar a:hover {color:#893003;}
+#side-bar p {position:absolute; text-align:center; left:30px; bottom:25px;}
+.inner-top-image {width:100%; height:302px; position:relative; left:0px;}
+#ce-highlight {z-index:10;}
+body #cpLink {display:block; bottom:57px; cursor:pointer;}
+#changePassword input {margin-bottom:0px; text-transform:inherit; background-color:#EBE8E5;}
+#interestedTable .leftCol {padding-right:14px;}
+#interestedTable td {vertical-align:middle; padding-bottom:13px;}
+#interestedTable .btn-change {color:#FFF; width:100%; padding-left:14px; cursor:pointer;}
+
+#priv, .iLogin {cursor:pointer;}
+#disclaimer, #changePassword {position:fixed; background-color:#F6F6F6; background-image: url(/static/images/btn-close.png); background-repeat: no-repeat; background-position: right top; width:660px; height:360px; left:50%; margin-left:-350px; top:38%; margin-top:-170px; z-index:10; text-align:left; display:none; padding:65px 30px 30px 30px;}
+#disclaimer .discContent, #changePassword .discContent {overflow-y:auto; padding-right:20px; height:360px;}
+.disclaimer-exit {position:absolute; top:0px; left:686px; height:34px; width:34px; background:url(/static/images/btn-close.png) no-repeat center center; cursor:pointer; z-index:11;}
+#shade {opacity:0.8;filter:alpha(opacity=80);position:fixed;width:100%;height:100%;display:none;z-index:8;background:#000;top:0;left:0;}
+.discContent .big {font-size:26px; padding-bottom:20px;}
+.discContent p, .discContent ul {padding-bottom:25px;}
+.discContent span {display:inline-block; padding-bottom:10px;}
+.discContent .bold, .discContent .underline, .discContent .boldi {font-weight:400;}
+.discContent .underline {text-decoration:underline;}
+.discContent .boldi {font-style:italic;}
+.discContent a {text-decoration:none; color:#893003;}
+
+#iLoginBox {display:block; position:fixed; right:60px; top:0px; z-index:3;}
+#loginDrop {padding:35px 20px 23px 20px; width:270px; background-color:#F3EEE6; display:none;}
+.iLogin {display:block; width:203px; height:50px; background-color:#893003; font-weight:200; color:#FFF; font-size:13px; line-height:50px; text-align:center; text-transform:uppercase; text-decoration:none; letter-spacing:1px; float:right;}
+body #login2Submit {margin-bottom:0px;}
+#msg {margin-top:7px;}
+.widthAuto {width:auto !important;}
+
+/*  Home */
+#homeImageSlider {position:fixed; height:100%;}
+.homeImage {position:absolute; left:0px; top:0px; height:100%; background-size:cover; background-attachment:fixed;}
+.homeImage h1 {font-size:52px; line-height:72px; color:#FFF; font-weight:200; text-transform:uppercase; border-bottom:4px solid #893003; margin-left:62px; min-width:660px; letter-spacing:-2px; position:relative; left:0px; top:12%;}
+.homeImage h1 span {color:#893003; font-weight:500;}
+.homeImage h3 {font-weight:200; font-size:32px; line-height:42px; margin-left:75px;position:relative; left:0px; top:14%; color:#FFF;}
+#HI1, #HI2, #HI3 {background-repeat:no-repeat;}
+#HI1 {background-image:url(/static/images/home1.jpg); background-position:left top; z-index:3;}
+#HI2 {background-image:url(/static/images/home2.jpg); background-position:left center; z-index:4;}
+#HI3 {background-image:url(/static/images/home3.jpg); background-position:left top; z-index:5;}
+
+#homeButtons {position:fixed; display:block; height:auto; top:43%; left:308px; z-index:6;}
+#homeButtons a {background:url(static/images/HB.png) no-repeat center center; height:24px; width:24px; display:inline-block; margin-bottom:10px; cursor:pointer;}
+#homeButtons a.sel, #homeButtons a:hover {background:url(/static/images/HBsel.png) no-repeat center center;}
+#homeButtons div.buttonLine {position:relative; height:1px; background-color:#FFF; top:-26px; margin:0 auto; width:50px;}
+
+
+#home.content {padding:0px; max-width:10000px; width:100%; font-size:0px; text-align:left; position:absolute; bottom:0px; z-index:6;}
+#homeTable {width:100%;}
+.hbox {padding:45px 5% 43px 5%; font-size:16px; vertical-align:top; height:100%;}
+#homeL {background:url(/static/images/hbackcolor.png) repeat center center; color:#FFF; min-width:360px; max-width:520px;}
+.hBigger {text-transform:uppercase; font-size:20px; line-height:35px; margin-bottom:22px;}
+.hReg {font-size:16px; line-height:17px; margin-bottom:8px; padding-left:19px; background:url(/static/images/hBullet.png) no-repeat left 6px}
+.indent {margin-left:36px; background:url(/static/images/hArrow.png) no-repeat left 5px;}
+
+#homeR {background-color:#F3EEE6; color:#716D61; height:100%; }
+#login-table {width:100%;}
+#USERNAME, #PASSWORD {background-color:transparent; border:none; width:100%; border-bottom:1px solid #E1D8C7; padding-bottom:9px; color:#FFF;}
+#USERNAME {margin-bottom:22px;}
+.login-btn {cursor:pointer; background-color:transparent; color:#FFF; border:none; width:100%; border:1px solid #DC6A30; height:35px; line-height:30px; font-size:14px; margin-top:28px; margin-bottom:15px; font-family:'Proxima Nova W01'; font-weight:200;}
+.homeLink, .btn-change {text-decoration:none; color:#FFF; background-color:#D45B1D; display:block; text-align:center; font-size:14px; text-transform:uppercase; line-height:35px; height:35px;}
+
+/* Programs */
+p.sandyUnderline {font-size:26px; line-height:30px; color:#A79054; text-transform:uppercase; letter-spacing:2px; border-bottom:2px solid #D0C5AB; padding-bottom:11px; margin-bottom:13px;}
+p.regular, .fTitleShow, .bulletHead, .bullets {font-size:15px; line-height:24px; color:#4D5053;}
+.fTitle {font-weight:400; cursor:pointer; text-transform:uppercase;}
+.bulletHead {margin-top:24px;}
+.bulletHead span {font-weight:400; color:#000;}
+.bullets p {font-family:'Proxima Nova W01'; background:url(/static/images/bullet.png) no-repeat left center; padding-left:8px;}
+.regDropDown{
+	width: 185px;
+}
+.regDropDown2{
+	width: 100px;
+}
+.regTextBox{
+	width: 100px;
+	height: 21px;
+}
+
+/* Contact */
+.contactTable {margin-top:44px;}
+#contact .fx-slider {margin-top:18px;}
+#contact table {width:100%;}
+#contact input, #contact textarea, .discContent input {font-family:'Proxima Nova W01'; font-weight:200; background-color:#F1F0EF; font-size:15px; color:#838485; padding-left:10px; border:none; width:100%; margin-bottom:20px; text-transform:uppercase;}
+#contact input, .discContent input {height:35px; line-height:35px;}
+#contact #phone {text-transform:none;}
+#contact textarea {height:117px; line-height:22px; resize:none; overflow:auto; padding-top:6px;}
+.btn-send {background-color:#893003; display:block; color:#FFF; height:35px; line-height:35px; font-size:15px; text-transform:uppercase; text-align:center; cursor:pointer; width:100%; padding:0 5px;}
+#response, #response2 {padding-top:10px;height:20px; width:100%; position:absolute; bottom:0px; left:0px;}
+#contact .info {padding-top:5px; min-width:150px;}
+#contact .info p.bigger {padding-bottom:25px; color:#4D5053; font-size:18px;}
+#contact .info p.reg {color:#838485; font-size:15px; line-height:24px;}
+#contact .info p.reg a {text-decoration:none; color:#893003}
+
+/* Resources */
+.resourceTitle {text-transform:uppercase; font-weight:400; color:#893003; font-size:15px; margin:30px 0 11px 0;}
+#resources.content a {text-decoration:none; color:#000; display:block; height:40px; line-height:40px; padding-left:41px; background-repeat:no-repeat; background-position:11px center;}
+#resources.content a.odd {background-color:#F4F2F0;}
+a.PDF {background-image:url(/static/images/pdf.png);}
+a.Doc {background-image:url(/static/images/doc.png)}
+a.Excel {background-image:url(/static/images/excel.png)}
+#archive {color:#000; text-transform:inherit; margin:0px; line-height:40px; height:40px; padding-left:12px; cursor:pointer; background-image:url(/static/images/resDown.png); background-repeat:no-repeat; background-position: right center; border-right:21px solid #EBE8E5;}
+#archive.sel {background-image:url(/static/images/resUp.png);}
+#archive.odd {background-color:#F4F2F0; border-right:21px solid #F4F2F0;}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	.hbox {width:50%;}
+	#homeL {min-width:0px; max-width:none;}
+}
+/* iPhone [portrait + landscape] */
+@media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+  .hbox {width:50%;}
+  #homeL {min-width:0px; max-width:none;}
+	#homeButtons a:hover {color:inherit;}
+}
+
+.btn-custom {
+  background-color: hsl(20, 96%, 29%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#903202", endColorstr="#903202");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#903202), to(#903202));
+  background-image: -moz-linear-gradient(top, #903202, #903202);
+  background-image: -ms-linear-gradient(top, #903202, #903202);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #903202), color-stop(100%, #903202));
+  background-image: -webkit-linear-gradient(top, #903202, #903202);
+  background-image: -o-linear-gradient(top, #903202, #903202);
+  background-image: linear-gradient(#903202, #903202);
+  border-color: #903202 #903202 hsl(20, 96%, 29%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
