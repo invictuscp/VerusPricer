@@ -51,6 +51,7 @@ def index(request):
 			ficoEligible = False
 			reservesEligible = False
 
+			print bkChapter
 			#Get Base Rate
 			if citizenship == "Yes" and (occupancy == "Primary" or occupancy == "2nd Home"):
 				baseRate = get_or_none(BaseRate, rateSheetName = "Credit Ascent", fico = "Foreign National1", ltv = ltv)
@@ -749,25 +750,24 @@ def getGrade(occupancy, fico, monthsBK, bkChapter, monthsDIL, monthsSS, monthsFC
 	if fico <= 540 and occupancy[:1] == "I":
 		grade = "N/A"
 
-	if (fico >= 680) and (x30x12 == 0 or x30x12 is None) and (x60x24 == 0 or x60x24 is None) and ((monthsBK >= 24 and bkChapter == 13) or (monthsBK >= 48 and bkChapter != 13) or monthsBK is None) and (monthsFC >= 48 or monthsFC is None) and (monthsSS >= 36 or monthsSS is None) and (monthsDIL >= 36 or monthsDIL is None):
+	if (fico >= 680) and (x30x12 == 0 or x30x12 is None) and (x60x24 == 0 or x60x24 is None) and ((monthsBK >= 24 and bkChapter == "Chapter 13") or (monthsBK >= 48 and bkChapter != "Chapter 13") or monthsBK is None) and (monthsFC >= 48 or monthsFC is None) and (monthsSS >= 36 or monthsSS is None) and (monthsDIL >= 36 or monthsDIL is None):
 		grade = "A"
-	elif (fico >= 660) and (x30x12 == 0 or x30x12 is None) and ((monthsBK >= 12 and bkChapter == 13) or (monthsBK >= 24 and bkChapter != 13) or monthsBK is None) and (monthsFC >= 24 or monthsFC is None) and (monthsSS >= 24 or monthsSS is None) and (monthsDIL >= 24 or monthsDIL is None):
+	elif (fico >= 660) and (x30x12 == 0 or x30x12 is None) and ((monthsBK >= 12 and bkChapter == "Chapter 13") or (monthsBK >= 24 and bkChapter != "Chapter 13") or monthsBK is None) and (monthsFC >= 24 or monthsFC is None) and (monthsSS >= 24 or monthsSS is None) and (monthsDIL >= 24 or monthsDIL is None):
 		grade = "A-"
-	elif (fico >= 580) and (x30x12 <= 1 or x30x12 is None) and ((monthsBK >= 24 and bkChapter != 13) or monthsBK is None) and (monthsFC >= 24 or monthsFC is None) and (monthsSS >= 12 or monthsSS is None) and (monthsDIL >= 12 or monthsDIL is None):
+	elif (fico >= 580) and (x30x12 <= 1 or x30x12 is None) and ((monthsBK >= 0 and bkChapter == "Chapter 13") or (monthsBK >= 24 and bkChapter != "Chapter 13") or monthsBK is None) and (monthsFC >= 24 or monthsFC is None) and (monthsSS >= 12 or monthsSS is None) and (monthsDIL >= 12 or monthsDIL is None):
 		grade = "B+"
-	elif (fico >= 540) and (x60x12 == 0 or x60x12 is None) and ((monthsBK >= 24 and bkChapter != 13) or monthsBK is None) and (monthsFC >= 24 or monthsFC is None):
+	elif (fico >= 540) and (x60x12 == 0 or x60x12 is None) and ((monthsBK >= 0 and bkChapter == "Chapter 13") or (monthsBK >= 24 and bkChapter != "Chapter 13") or monthsBK is None) and (monthsFC >= 24 or monthsFC is None):
 		grade = "B"
-	elif (fico >= 500) and (x90x12 == 0 or x90x12 is None) and ((monthsBK >= 12 and bkChapter != 13) or monthsBK is None) and (monthsFC >= 12 or monthsFC is None):
+	elif (fico >= 500) and (x90x12 == 0 or x90x12 is None) and ((monthsBK >= 0 and bkChapter == "Chapter 13") or (monthsBK >= 12 and bkChapter != "Chapter 13") or monthsBK is None) and (monthsFC >= 12 or monthsFC is None):
 		grade = "B-"
 	elif (fico >= 500) and (x90x12 == 0 or x90x12 is None):
 		grade = "C"
+	elif bkChapter != "N/A" and occupancy == "Primary":
+		grade = "C"
+	elif bkChapter != "N/A" and occupancy == "Investor":
+		grade = "B-"
 	else:
 		grade = "N/A"
-
-	if bkChapter != "N/A" and occupancy == "Primary":
-		grade = "C"
-	if bkChapter != "N/A" and occupancy == "Investor":
-		grade = "B-"
 	return grade
 
 def getPIHousingEligibility(monthsBK, bkChapter, monthsDIL, monthsSS, monthsFC, x30x12, x60x12, x90x12, x30x24, x60x24, x90x24):
