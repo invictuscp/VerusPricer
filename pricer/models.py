@@ -43,7 +43,7 @@ class BaseRate(models.Model):
 	rateSheetName = models.CharField(max_length=128)
 	fico = models.CharField(max_length=128)
 	ltv = models.CharField(max_length=128)
-	adj = models.DecimalField(default = 0, max_digits=5, decimal_places = 3)
+	adj = models.DecimalField(default = 0, max_digits=6, decimal_places = 4)
 
 	def __str__(self):
 		return self.adj

@@ -102,6 +102,18 @@ def index(request):
 				ioAdj = get_or_none(IOAdj, rateSheetName = "Investor PI", io = io, ltv = ltv)
 				prepayAdj = get_or_none(PrepayAdj, rateSheetName = "Investor PI", prepayTerm = prepay, ltv = ltv)
 				termAdj = get_or_none(LoanTermAdj, rateSheetName = "Investor PI", loanTerm = term)
+				#print "Base: " + str(baseRate.adj)
+				#print "Doc: " + str(docAdj.adj)
+				#print "DTI: " + str(dtiAdj.adj)
+				#print "Loan Amount: " + str(loanAdj.adj)
+				#print "Reserves: " + str(reservesAdj.adj)
+				#print "Purpose: " + str(purposeAdj.adj)
+				#print "Occ: " + str(occAdj.adj)
+				#print "Property: " + str(propAdj.adj)
+				#print "State: " + str(stateAdj.adj)
+				#print "IO: " + str(ioAdj.adj)
+				#print "Prepay: " + str(prepayAdj.adj)
+				#print "Term: " + str(termAdj.adj)
 
 			else:
 				docAdj = get_or_none(DocTypeAdj, rateSheetName = "Investor DTI", docType = doctype, grade = grade, ltv = ltv)
@@ -989,13 +1001,4 @@ def getDTIReservesEligibility(occupancy, doctype, ltv, dti, loanamount, reserves
 				result = "Not Eligible"
 	return result
 
-				#print "Doc: " + str(docAdj.adj)
-				#print "DTI: " + str(dtiAdj.adj)
-				#print "Loan Amount: " + str(loanAdj.adj)
-				#print "Purpose: " + str(purposeAdj.adj)
-				#print "Occ: " + str(occAdj.adj)
-				#print "Property: " + str(propAdj.adj)
-				#print "State: " + str(stateAdj.adj)
-				#print "IO: " + str(ioAdj.adj)
-				#print "Prepay: " + str(prepayAdj.adj)
-				#print "Term: " + str(termAdj.adj)
+				
