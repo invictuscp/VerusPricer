@@ -429,7 +429,7 @@ def index(request):
 					reasons = reasons + "LTV Exceeds Limit for Foreign National Borrowers" + '\n'
 					eligibility = "Not Eligible"
 
-				if int(fico[:3]) <= 620:
+				if int(fico[:3]) < 620:
 					reasons = reasons + "FICO Below Limit for Foreign National Borrowers" + '\n'
 					eligibility = "Not Eligible"
 
