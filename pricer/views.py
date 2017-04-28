@@ -165,6 +165,7 @@ def index(request):
 								eligibility = "Not Eligible"
 
 				if ficoEligible == False:
+					eligibility = "Not Eligible"
 					reasons = reasons + "FICO Below Limit For Given FICO/LTV/Loan Amount Combination" + '\n'
 
 				# DTI/RESERVES MATRIX ELIGIBILITY
