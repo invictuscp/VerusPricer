@@ -374,10 +374,6 @@ def index(request):
 						reasons = reasons + "FICO Below Minimum for Given State" + '\n'
 						eligibility = "Not Eligible"
 
-					if grade not in ("A", "A-"):
-						reasons = reasons + "Grade Below Minimum for Given State" + '\n'
-						eligibility = "Not Eligible"
-
 				if dti != "N/A":
 					reasons = reasons + "DTI Not Allowed for Verus Professional Investor Program" + '\n'
 					eligibility = "Not Eligible"
