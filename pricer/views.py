@@ -368,6 +368,12 @@ def index(request):
 						reasons = reasons + "DSCR Below Limit Given Loan Amount" + '\n'
 						eligibility = "Not Eligible"
 
+				# NO RATIO ELIGIBILITY
+				if doctype == "No Ratio":
+					if dscr != "N/A":
+						reasons = reasons + "Expected DSCR Documnetation Type - DSCR Not Required for No Ratio Loans" + '\n'
+						eligibility = "Not Eligible"
+
 				# MISC STATE ELIGIBILITY
 				if state in ("DC", "MD", "NJ", "NY") and fico != "Foreign Credit":
 					if int(fico[:3]) < 680:
