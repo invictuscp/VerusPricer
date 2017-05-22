@@ -51,15 +51,14 @@ def index(request):
 			ficoEligible = False
 			reservesEligible = False
 
-			print bkChapter
 			#Get Base Rate
 			if citizenship == "Yes" and (occupancy == "Primary" or occupancy == "2nd Home"):
 				baseRate = get_or_none(BaseRate, rateSheetName = "Credit Ascent", fico = "Foreign National1", ltv = ltv)
 			elif occupancy == "Primary" or occupancy == "2nd Home":
 				baseRate = get_or_none(BaseRate, rateSheetName = "Credit Ascent", fico = fico, ltv = ltv)
-			elif citizenship == "Yes" and occupancy == "Investor" and (doctype == "No Ratio" or doctype == "DSCR"):
+			elif citizenship == "Yes" and occupancy == "Investor" and doctype == "DSCR":
 				baseRate = get_or_none(BaseRate, rateSheetName = "Investor PI", fico = "Foreign National", ltv = ltv)
-			elif occupancy == "Investor" and (doctype == "No Ratio" or doctype == "DSCR"):
+			elif occupancy == "Investor" and doctype == "DSCR":
 				baseRate = get_or_none(BaseRate, rateSheetName = "Investor PI", fico = fico, ltv = ltv)
 			elif citizenship == "Yes" and occupancy == "Investor":
 				baseRate = get_or_none(BaseRate, rateSheetName = "Investor DTI", fico = "Foreign National1", ltv = ltv)
@@ -67,7 +66,7 @@ def index(request):
 				baseRate = get_or_none(BaseRate, rateSheetName = "Investor DTI", fico = fico, ltv = ltv)
 
 			#Calculate Grade
-			if (doctype == "DSCR" or doctype == "No Ratio") and occupancy == "Investor":
+			if doctype == "DSCR" and occupancy == "Investor":
 				grade = "N/A"
 				eligibility = getPIHousingEligibility(monthsBK, bkChapter, monthsDIL, monthsSS, monthsFC, int(x30x12), int(x60x12), int(x90x12), int(x30x24), int(x60x24), int(x90x24))
 			else:
@@ -93,8 +92,13 @@ def index(request):
 				ioAdj = get_or_none(IOAdj, rateSheetName = "Credit Ascent", io = io, ltv = ltv)
 				termAdj = get_or_none(LoanTermAdj, rateSheetName = "Credit Ascent", loanTerm = term)
 
-			elif (doctype == "DSCR" or doctype == "No Ratio") and occupancy == "Investor":
-				docAdj = get_or_none(DocTypeAdj, rateSheetName = "Investor PI", docType = doctype, grade = "A", ltv = ltv)
+			elif doctype == "DSCR" and occupancy == "Investor":
+				if dscr == "< 1.15":
+					docAdj = get_or_none(DocTypeAdj, rateSheetName = "Investor PI", docType = doctype, grade = "B", ltv = ltv)
+				elif dscr != "N/A":
+					docAdj = get_or_none(DocTypeAdj, rateSheetName = "Investor PI", docType = doctype, grade = "A", ltv = ltv)
+				else:
+					docAdj = None
 				reservesAdj = get_or_none(ReservesAdj, rateSheetName = "Investor PI", reserves = reserves, ltv = ltv)
 				loanAdj = get_or_none(LoanBalanceAdj, rateSheetName = "Investor PI", balance = loanamount, ltv = ltv)
 				purposeAdj = get_or_none(PurposeAdj, rateSheetName = "Investor PI", purpose = purpose, grade = "A", ltv = ltv)
@@ -103,18 +107,18 @@ def index(request):
 				ioAdj = get_or_none(IOAdj, rateSheetName = "Investor PI", io = io, ltv = ltv)
 				prepayAdj = get_or_none(PrepayAdj, rateSheetName = "Investor PI", prepayTerm = prepay, ltv = ltv)
 				termAdj = get_or_none(LoanTermAdj, rateSheetName = "Investor PI", loanTerm = term)
-				#print "Base: " + str(baseRate.adj)
-				#print "Doc: " + str(docAdj.adj)
+				print "Base: " + str(baseRate.adj)
+				print "Doc: " + str(docAdj.adj)
 				#print "DTI: " + str(dtiAdj.adj)
-				#print "Loan Amount: " + str(loanAdj.adj)
-				#print "Reserves: " + str(reservesAdj.adj)
-				#print "Purpose: " + str(purposeAdj.adj)
+				print "Loan Amount: " + str(loanAdj.adj)
+				print "Reserves: " + str(reservesAdj.adj)
+				print "Purpose: " + str(purposeAdj.adj)
 				#print "Occ: " + str(occAdj.adj)
-				#print "Property: " + str(propAdj.adj)
-				#print "State: " + str(stateAdj.adj)
-				#print "IO: " + str(ioAdj.adj)
-				#print "Prepay: " + str(prepayAdj.adj)
-				#print "Term: " + str(termAdj.adj)
+				print "Property: " + str(propAdj.adj)
+				print "State: " + str(stateAdj.adj)
+				print "IO: " + str(ioAdj.adj)
+				print "Prepay: " + str(prepayAdj.adj)
+				print "Term: " + str(termAdj.adj)
 
 			else:
 				docAdj = get_or_none(DocTypeAdj, rateSheetName = "Investor DTI", docType = doctype, grade = grade, ltv = ltv)
@@ -134,7 +138,7 @@ def index(request):
 					sumAdj = gradeAdj.adj + docAdj.adj + dtiAdj.adj + loanAdj.adj + purposeAdj.adj + occAdj.adj + propAdj.adj + stateAdj.adj + ioAdj.adj + termAdj.adj
 				else:
 					eligibility = "Not Eligible"
-			elif (doctype == "DSCR" or doctype == "No Ratio") and occupancy == "Investor":
+			elif doctype == "DSCR" and occupancy == "Investor":
 				if (docAdj is not None) and (reservesAdj is not None) and (loanAdj is not None) and (purposeAdj is not None) and (propAdj is not None) \
 					and (stateAdj is not None) and (ioAdj is not None) and (prepayAdj is not None) and (termAdj is not None):
 					sumAdj = docAdj.adj + reservesAdj.adj + loanAdj.adj + purposeAdj.adj + prepayAdj.adj + propAdj.adj + stateAdj.adj + ioAdj.adj + termAdj.adj
@@ -285,7 +289,7 @@ def index(request):
 					reasons = reasons + "Prepay Not Allowed for Primary/2nd Home Borrowers" + '\n'
 					eligibility = "Not Eligible"
 
-				if doctype in ("No Ratio", "DSCR"):
+				if doctype == "DSCR":
 					reasons = reasons + "Selected Doc Type Not Allowed for Primary/2nd Home Borrowers" + '\n'
 					eligibility = "Not Eligible"
 
@@ -297,8 +301,15 @@ def index(request):
 					reasons = reasons + "DSCR Not Allowed for Primary/2nd Home Borrowers" + '\n'
 					eligibility = "Not Eligible"
 
-			# INVESTOR DSCR/NO RATIO ELIGIBILITY
-			elif (doctype == "DSCR" or doctype == "No Ratio") and occupancy == "Investor":
+			# INVESTOR DSCR ELIGIBILITY
+			elif doctype == "DSCR" and occupancy == "Investor":
+				print doctype
+				if dscr == "< 1.15":
+					doctype = "DSCR < 1.15"
+					print doctype
+				elif dscr != "N/A":
+					doctype = "DSCR >= 1.15"
+					print doctype
 				# LTV/FICO/LOAN AMOUNT MATRIX ELIGIBILITY
 				if not PIProductMatrix.objects.all().filter(docType = doctype, loanamount = loanamount, purpose = purpose):
 					reasons = reasons + "Loan Amount Exceeds Limit For Given FICO/LTV/Loan Amount Combination" + '\n'
@@ -368,12 +379,6 @@ def index(request):
 						reasons = reasons + "DSCR Below Limit Given Loan Amount" + '\n'
 						eligibility = "Not Eligible"
 
-				# NO RATIO ELIGIBILITY
-				if doctype == "No Ratio":
-					if dscr != "N/A":
-						reasons = reasons + "Expected DSCR Documnetation Type - DSCR Not Required for No Ratio Loans" + '\n'
-						eligibility = "Not Eligible"
-
 				# MISC STATE ELIGIBILITY
 				if state in ("DC", "MD", "NJ", "NY") and fico != "Foreign Credit":
 					if int(fico[:3]) < 680:
@@ -388,7 +393,7 @@ def index(request):
 			elif citizenship == "Yes":
 				# LTV/FICO/LOAN AMOUNT MATRIX ELIGIBILITY
 				matrix = get_or_none(FNProductMatrix, docType = doctype, grade = grade, loanamount = loanamount, purpose = purpose)
-				if doctype in ("Full Doc", "DSCR", "No Ratio") and matrix is None:
+				if doctype in ("Full Doc", "DSCR") and matrix is None:
 					reasons = reasons + "Loan Amount Exceeds Limit For Given FICO/LTV/Loan Amount Combination" + '\n'
 					eligibility = "Not Eligible"
 				elif doctype in ("12 Mo Bank Statement", "24 Mo Bank Statement", "Asset Utilization"):
@@ -457,7 +462,7 @@ def index(request):
 					reasons = reasons + "DTI Required for Foreign National Borrowers with Selected Doc Type" + '\n'
 					eligibility = "Not Eligible"
 				else:
-					if dti != "N/A" and doctype in ("DSCR", "No Ratio"):
+					if dti != "N/A" and doctype == "DSCR":
 						reasons = reasons + "DTI Not Allowed for Foreign National Borrowers with Selected Doc Type" + '\n'
 						eligibility = "Not Eligible"
 
@@ -613,7 +618,7 @@ def index(request):
 			# Set final eligibility
 			if (occupancy == "Primary" or occupancy == "2nd Home") and eligibility == "Eligible":
 				eligibility = "Eligible for Verus Credit Ascent (Owner Occupied & 2nd Home) Program"
-			elif (doctype == "DSCR" or doctype == "No Ratio") and occupancy == "Investor" and eligibility == "Eligible":
+			elif doctype == "DSCR" and occupancy == "Investor" and eligibility == "Eligible":
 				eligibility = "Eligible for Verus Investor Solutions - Professional Investor Program"
 			elif eligibility == "Eligible":
 				eligibility = "Eligible for Verus Investor Solutions - Borrower DTI Program"

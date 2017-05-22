@@ -412,6 +412,7 @@ def importRateSheets():
  		if ws.cell(row=row, column=3).value is not None and ws.cell(row=row, column=4).value is not None and ws.cell(row=row, column=5).value is not None:
  			fico = ws.cell(row=row, column=4).value
  			doctype = ws.cell(row=row, column=3).value
+ 			print doctype
  			loanamount = ws.cell(row=row, column=5).value
  			reserves = ws.cell(row=row, column=7).value.replace(" Months", "")
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Purchase", maxLTV = ws.cell(row=row, column=8).value)
@@ -420,6 +421,7 @@ def importRateSheets():
  		elif ws.cell(row=row, column=3).value is None and ws.cell(row=row, column=4).value is None and ws.cell(row=row, column=5).value is not None:
  			loanamount = ws.cell(row=row, column=5).value
  			reserves = ws.cell(row=row, column=7).value.replace(" Months", "")
+ 			print doctype
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Purchase", maxLTV = ws.cell(row=row, column=8).value)
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Rate/Term Refinance", maxLTV = ws.cell(row=row, column=9).value)
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Cash Out Refinance", maxLTV = ws.cell(row=row, column=10).value)
@@ -427,11 +429,13 @@ def importRateSheets():
  			fico = ws.cell(row=row, column=4).value
  			loanamount = ws.cell(row=row, column=5).value
  			reserves = ws.cell(row=row, column=7).value.replace(" Months", "")
+ 			print doctype
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Purchase", maxLTV = ws.cell(row=row, column=8).value)
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Rate/Term Refinance", maxLTV = ws.cell(row=row, column=9).value)
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Cash Out Refinance", maxLTV = ws.cell(row=row, column=10).value)
  		elif ws.cell(row=row, column=3).value is None and ws.cell(row=row, column=4).value is None and ws.cell(row=row, column=5).value is None:
  			reserves = ws.cell(row=row, column=7).value.replace(" Months", "")
+ 			print doctype
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Purchase", maxLTV = ws.cell(row=row, column=8).value)
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Rate/Term Refinance", maxLTV = ws.cell(row=row, column=9).value)
  			result = createPIModels(docType = doctype, fico = fico, loanamount = loanamount, reserves = reserves, purpose = "Cash Out Refinance", maxLTV = ws.cell(row=row, column=10).value)
@@ -446,7 +450,7 @@ def importRateSheets():
  	endRow = 8
  	for row in range(startRow, endRow+1):
  		if ws.cell(row=row, column=1).value is not None and ws.cell(row=row, column=2).value is not None:
- 			doctype = ws.cell(row=row, column=1).value
+ 			doctype = 'Full Doc'
  			grade = ws.cell(row=row, column=2).value
  			loanamount = ws.cell(row=row, column=3).value
  			result = createFNModels(docType = doctype, grade = grade, loanamount = loanamount, purpose = "Purchase", maxLTV = ws.cell(row=row, column=4).value)
@@ -469,7 +473,7 @@ def importRateSheets():
  	endRow = 12
  	for row in range(startRow, endRow+1):
  		if ws.cell(row=row, column=1).value is not None:
- 			doctype = ws.cell(row=row, column=1).value
+ 			doctype = 'DSCR'
  			grade = "N/A"
  			loanamount = ws.cell(row=row, column=3).value
  			result = createFNModels(docType = doctype, grade = grade, loanamount = loanamount, purpose = "Purchase", maxLTV = ws.cell(row=row, column=4).value)

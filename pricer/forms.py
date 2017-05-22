@@ -32,8 +32,7 @@ DOCS = (("Full Doc", "Full Doc"),
 		("24 Mo Bank Statement", "24 Mo Bank Statement"),
 		("12 Mo Bank Statement", "12 Mo Bank Statement"),
 		("Asset Utilization", "Asset Utilization"),
-		("DSCR", "DSCR"),
-		("No Ratio", "No Ratio"))
+		("DSCR", "DSCR"))
 
 DTIS = (("<= 36%", "<= 36%"), ("36.01% - 43%", "36.01% - 43%"), ("43.01% - 50%", "43.01% - 50%"), ("> 50%", "> 50%"), ("N/A", "N/A"))
 

@@ -459,10 +459,10 @@ def importRateSheets():
 	for row in range(startRow, endRow+1):
 		for col in range(startCol, endCol+1):
 			if ws.cell(row=row, column=col).value != "NA":
-				if ws.cell(row=row, column=startCol-1).value == "DSCR (620 Min FICO)":
+				if ws.cell(row=row, column=startCol-1).value == "DSCR>=1.15 (620 Min FICO)":
 					adj = DocTypeAdj.objects.get_or_create(rateSheetName = "Investor PI", docType = "DSCR", grade = "A", ltv = ws.cell(row=startRow-1, column=col).value, adj = ws.cell(row=row, column=col).value)
-				elif ws.cell(row=row, column=startCol-1).value == "No Ratio (640 Min FICO)":
-					adj = DocTypeAdj.objects.get_or_create(rateSheetName = "Investor PI", docType = "No Ratio", grade = "A", ltv = ws.cell(row=startRow-1, column=col).value, adj = ws.cell(row=row, column=col).value)
+				elif ws.cell(row=row, column=startCol-1).value == "DSCR<1.15 (640 Min FICO)":
+					adj = DocTypeAdj.objects.get_or_create(rateSheetName = "Investor PI", docType = "DSCR", grade = "B", ltv = ws.cell(row=startRow-1, column=col).value, adj = ws.cell(row=row, column=col).value)
 				else:
 					adj = DocTypeAdj.objects.get_or_create(rateSheetName = "Investor PI", docType = ws.cell(row=row, column=startCol-1).value, grade = "A", ltv = ws.cell(row=startRow-1, column=col).value, adj = ws.cell(row=row, column=col).value)
 
